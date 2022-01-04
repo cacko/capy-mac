@@ -17,6 +17,7 @@ tasks:
       - echo "increment build number"
       - agvtool next-version -all
       - echo "building app"
+      - xcodebuild clean
       - xcodebuild  ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO -project capy.xcodeproj -scheme capy -configuration Release DSTROOT="/Users/jago/Code/capy-mac" archive
 
   install:
@@ -25,3 +26,9 @@ tasks:
       - echo "copy app to /Applications"
       - rm -rf /Applications/capy.app
       - mv Applications/capy.app /Applications
+      
+  release:
+      desc: new release
+      cmds:
+        - task: archive
+        - task: install

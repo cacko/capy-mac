@@ -29,7 +29,6 @@ class PlayerModel: ObservableObject {
   @Published var borderWidth: CGFloat = 0
   @Published var error: DeviceError? = nil
   @Published var cornerRadius: CGFloat = 0
-  @Published var resoluion: CGSize = CGSize()
   @Published var muted: Bool = false
   @Published var resolution: CGSize = CGSize(width: 1920, height: 1080)
   @Published var onTop: Bool = true
@@ -221,7 +220,7 @@ class PlayerModel: ObservableObject {
   }
 
   private func getPreset() -> AVCaptureSession.Preset {
-    if CGSize(width: 1920, height: 1080).equalTo(resoluion) {
+    if CGSize(width: 1920, height: 1080).equalTo(resolution) {
       return AVCaptureSession.Preset.hd1920x1080
     }
     return AVCaptureSession.Preset.high
@@ -231,7 +230,7 @@ class PlayerModel: ObservableObject {
     do {
       try videoDevice!.lockForConfiguration()
       captureSession.beginConfiguration()
-      resoluion = getResolution(videoDevice!)
+      resolution = getResolution(videoDevice!)
       captureSession.sessionPreset = getPreset()
       let input = try AVCaptureDeviceInput(device: videoDevice!)
       _videoInput = videoDevice!.localizedName

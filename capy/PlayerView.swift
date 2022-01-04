@@ -26,11 +26,7 @@ class PlayerView: NSView {
     previewLayer.frame = self.frame
     previewLayer.minificationFilter = .nearest
     previewLayer.magnificationFilter = .nearest
-    translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      widthAnchor.constraint(equalTo: self.widthAnchor),
-      heightAnchor.constraint(equalTo: self.heightAnchor)
-    ])
+    previewLayer.videoGravity = .resizeAspect
     layer = previewLayer
   }
 

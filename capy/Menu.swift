@@ -241,11 +241,9 @@ class Menu: NSMenu, NSMenuDelegate, NSMenuItemValidation, NSUserInterfaceValidat
     }
     
     center.addObserver(forName: .onResolutionChange, object: nil, queue: mainQueue) { _ in
-      self.window.aspectRatio = self.player.resoluion
-      self.window.contentAspectRatio = self.player.resoluion
+      self.window.contentAspectRatio = self.player.resolution
     }
-    self.window.aspectRatio = self.player.resoluion
-    self.window.contentAspectRatio = self.player.resoluion
+    self.window.contentAspectRatio = self.player.resolution
 
   }
 

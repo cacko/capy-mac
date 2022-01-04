@@ -27,19 +27,13 @@ struct capyApp: App {
 }
 
 class MainWindowController: NSWindowController, NSWindowDelegate {
-
   override func windowDidLoad() {
     super.windowDidLoad()
-
     self.window?.delegate = self
-
   }
-
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-  var fixedRatio = NSSize(width: 1920, height: 1080)
 
   func applicationDidFinishLaunching(_ notification: Notification) {
 
@@ -47,15 +41,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     guard let window = app.windows.first else {
       return
     }
-
     let menu = Menu(window)
-
     window.center()
     window.setFrameAutosaveName("Main Window")
     window.makeKeyAndOrderFront(nil)
     window.collectionBehavior = .fullScreenPrimary
     menu.isFloating.toggle()
-
   }
-
 }

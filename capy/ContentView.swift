@@ -24,7 +24,9 @@ struct ContentView: View {
       GeometryReader { geo in
         PlayerContainerView(captureSession: player.captureSession)
           .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-          .aspectRatio(player.resoluion, contentMode: .fit)
+          .aspectRatio(player.resolution, contentMode: .fit)
+          .background(.clear)
+          .padding(geo.safeAreaInsets)
       }
       HStack {
         Image(systemName: "speaker.slash")
@@ -44,9 +46,8 @@ struct ContentView: View {
       }
     }.alert(item: $player.error) { err in
       Alert(title: Text("Device error"), message: Text(err.msg), dismissButton: .cancel())
-    }.padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)).aspectRatio(
-      player.resoluion,
-      contentMode: .fill
-    ).background(.black)
+    }
+    .aspectRatio(player.resolution, contentMode: .fill)
+    .background(.black)
   }
 }
